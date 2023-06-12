@@ -18,4 +18,9 @@ final class DeviceTests: XCTestCase {
         XCTAssertEqual(DeviceIOSCompatibility.Device(.iPadAir).isCompatible(withMajorIOSVersion: 12), true)
         XCTAssertEqual(DeviceIOSCompatibility.Device(.iPadAir).isCompatible(withMajorIOSVersion: 13), false)
     }
+
+    func testCurrent() {
+        let currentVersion = ProcessInfo.processInfo.operatingSystemVersion.majorVersion
+        XCTAssertEqual(DeviceIOSCompatibility.Device.current.isCompatible(withMajorIOSVersion: currentVersion), true)
+    }
 }

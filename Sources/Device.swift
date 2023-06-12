@@ -154,7 +154,7 @@ public struct Device {
             return nil
         }
 
-        guard let compatibleVersions = Self.compatibleDevicesForIOSVersions.first(where: { $0.1.contains(self.deviceID) })?.0 else {
+        guard let compatibleVersions = Self.compatibleDevicesForIOSVersions.first(where: { self.deviceID.realDevice.isOneOf($0.1) })?.0 else {
             return nil
         }
 
